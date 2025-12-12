@@ -117,8 +117,8 @@ public class HomeManager {
         if(!homeFile.contains("home.players")) {
             return;
         }
-        for(String key: homeFile.getConfigurationSection("homes.players").getKeys(false)){
-            String path = "home.players" + key + ".location";
+        for(String key: homeFile.getConfigurationSection("home.players").getKeys(false)){
+            String path = "home.players." + key + ".location";
 
             World world = Bukkit.getWorld(homeFile.getString(path + ".world"));
             double x = homeFile.getDouble(path + ".x");
@@ -131,7 +131,6 @@ public class HomeManager {
             Location loc = new Location(world, x, y, z, yaw, pitch);
 
             homeLocation.put(playerUUID, loc);
-            System.out.println(homeLocation.toString());
         }
 
 
