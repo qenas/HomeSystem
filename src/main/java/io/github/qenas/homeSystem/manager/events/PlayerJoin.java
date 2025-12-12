@@ -20,19 +20,21 @@ public class PlayerJoin implements Listener {
     public void onPlayerJoin (PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        if(!homeManager.playerHasHome(player)) {
-            homeManager.saveHome(player, null);
-            player.sendMessage("» You do not have a home.");
-        } else {
-            if(homeManager.getHome(player) == null) {
-                player.sendMessage("» You do not have a home");
-            } else {
+        if(homeManager.playerIsOnFile(player)) {
+
+            if(homeManager.playerHasHome(player)) {
                 Location loc = homeManager.getHome(player);
                 player.sendMessage(ChatColor.GREEN + "» You have a home, the coordinates are: ");
                 player.sendMessage(ChatColor.GOLD + "X: " + ChatColor.WHITE + loc.getX());
                 player.sendMessage(ChatColor.GOLD + "Y: " + ChatColor.WHITE + loc.getY());
                 player.sendMessage(ChatColor.GOLD + "Z: " + ChatColor.WHITE + loc.getZ());
+            } else {
+                player.sendMessage("» You do not have a home");
             }
+
+        } else {
+            homeManager.addPlayerToFile(player);
+            player.sendMessage("» You do not have a home.");
         }
 
     }

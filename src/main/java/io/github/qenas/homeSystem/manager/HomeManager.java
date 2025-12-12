@@ -70,8 +70,25 @@ public class HomeManager {
         return homeFile;
     }
 
+    public boolean playerIsOnFile(Player player) {
+        String path = "home.players." + player.getUniqueId().toString();
+        return homeFile.contains(path);
+    }
+
     public boolean playerHasHome(Player player) {
-        return homeLocation.containsKey(player.getUniqueId());
+        if(getHome(player) != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public void addPlayerToFile(Player player) {
+        String path = "home.players." + player.getUniqueId().toString();
+        if(!playerIsOnFile(player)) {
+            homeFile.set(path + ".name", player.getName());
+            saveFile();
+            homeLocation.put(player.getUniqueId(), null); //puts the player to the map
+        }
     }
 
 
