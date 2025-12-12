@@ -21,7 +21,6 @@ public class PlayerJoin implements Listener {
         Player player = event.getPlayer();
 
         if(homeManager.playerIsOnFile(player)) {
-
             if(homeManager.playerHasHome(player)) {
                 Location loc = homeManager.getHome(player);
                 player.sendMessage(ChatColor.GREEN + "» You have a home, the coordinates are: ");

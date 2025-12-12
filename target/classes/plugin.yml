@@ -2,3 +2,7 @@ name: HomeSystem
 version: '0.0.1'
 main: io.github.qenas.homeSystem.HomeSystem
 api-version: '1.21'
+commands:
+  sethome:
+    description: Allows the player to save a home.
+    usage: /sethome

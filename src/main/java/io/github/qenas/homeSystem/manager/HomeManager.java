@@ -113,8 +113,8 @@ public class HomeManager {
     }
 
 
-    private void loadHomes() {
-        if(!homeFile.contains("homes.players")) {
+    public void loadHomes() {
+        if(!homeFile.contains("home.players")) {
             return;
         }
         for(String key: homeFile.getConfigurationSection("homes.players").getKeys(false)){
@@ -131,6 +131,7 @@ public class HomeManager {
             Location loc = new Location(world, x, y, z, yaw, pitch);
 
             homeLocation.put(playerUUID, loc);
+            System.out.println(homeLocation.toString());
         }
 
 
