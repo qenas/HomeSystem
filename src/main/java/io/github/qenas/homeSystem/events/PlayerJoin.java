@@ -1,6 +1,7 @@
 package io.github.qenas.homeSystem.events;
 
 import io.github.qenas.homeSystem.manager.HomeManager;
+import io.github.qenas.homeSystem.resourse.CoordinatesShower;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -24,9 +25,7 @@ public class PlayerJoin implements Listener {
             if(homeManager.playerHasHome(player)) {
                 Location loc = homeManager.getHome(player);
                 player.sendMessage(ChatColor.GREEN + "» You have a home, the coordinates are: ");
-                player.sendMessage(ChatColor.GOLD + "X: " + ChatColor.WHITE + loc.getX());
-                player.sendMessage(ChatColor.GOLD + "Y: " + ChatColor.WHITE + loc.getY());
-                player.sendMessage(ChatColor.GOLD + "Z: " + ChatColor.WHITE + loc.getZ());
+                CoordinatesShower.displayCoordinates(loc, player);
             } else {
                 player.sendMessage("» You do not have a home");
             }

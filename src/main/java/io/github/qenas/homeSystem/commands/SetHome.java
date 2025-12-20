@@ -1,8 +1,10 @@
 package io.github.qenas.homeSystem.commands;
 
 import io.github.qenas.homeSystem.manager.HomeManager;
+import io.github.qenas.homeSystem.resourse.CoordinatesShower;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,12 +28,18 @@ public class SetHome implements CommandExecutor {
 
         Location playerLocation = player.getLocation();
 
-        homeManager.saveHome(player, playerLocation);
+        World worldLocation = playerLocation.getWorld();
 
-        player.sendMessage(ChatColor.GREEN + "» You have a home now, the coordinates are: ");
-        player.sendMessage(ChatColor.GOLD + "X: " + ChatColor.WHITE + playerLocation.getX());
-        player.sendMessage(ChatColor.GOLD + "Y: " + ChatColor.WHITE + playerLocation.getY());
-        player.sendMessage(ChatColor.GOLD + "Z: " + ChatColor.WHITE + playerLocation.getZ());
+        if(worldLocation.getEnvironment().equals(World.Environment.NORMAL)) {
+            homeManager.saveHome(player, playerLocation);
+
+            player.sendMessage(ChatColor.GREEN + "» You have a home now, the coordinates are: ");
+            CoordinatesShower.displayCoordinates(playerLocation, player);
+        } else {
+            player.sendMessage("§c» You can't use this command in " + worldLocation.getEnvironment().toString().toLowerCase());
+        }
+
+
 
         return true;
     }

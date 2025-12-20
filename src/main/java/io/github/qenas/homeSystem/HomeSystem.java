@@ -14,7 +14,7 @@ public final class HomeSystem extends JavaPlugin {
         HomeManager homeManager = new HomeManager(this);
         getServer().getPluginManager().registerEvents(new PlayerJoin(homeManager), this);
         getCommand("sethome").setExecutor(new SetHome(homeManager));
-        getCommand("home").setExecutor(new Home(homeManager, new CooldownManager(this)));
+        getCommand("home").setExecutor(new Home(homeManager, new CooldownManager(this), this));
 
 
     }
