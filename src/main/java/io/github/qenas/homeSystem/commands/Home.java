@@ -38,6 +38,7 @@ public class Home implements CommandExecutor {
 
         if(homeManager.playerHasHome(player)) {
             Location playerHome = homeManager.getHome(player);
+            teleportManager.startTeleport(player, playerHome);
 
         } else {
             player.sendMessage("» You do not have a home");

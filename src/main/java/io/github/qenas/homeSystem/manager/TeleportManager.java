@@ -29,7 +29,7 @@ public class TeleportManager {
         }
 
         if(!cooldownManager.hasCooldown(player)) { //verify if the command has been used early by the player
-            TeleportTask teleportTask = new TeleportTask(plugin, this, cooldownManager, player, home);
+            TeleportTask teleportTask = new TeleportTask(plugin, this, player, home);
             activeTask.put(playerUUID, teleportTask);
 
             teleportTask.runTaskTimer(plugin, 0, 20L);

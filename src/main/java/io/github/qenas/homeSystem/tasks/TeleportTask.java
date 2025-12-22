@@ -4,6 +4,7 @@ import io.github.qenas.homeSystem.manager.CooldownManager;
 import io.github.qenas.homeSystem.manager.TeleportManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -12,19 +13,17 @@ public class TeleportTask extends BukkitRunnable {
 
     private JavaPlugin plugin;
     private TeleportManager teleportManager;
-    private CooldownManager cooldownManager;
     private Player player;
     private Location home;
-    private Location startLocation;
+    private Block startLocation;
     private int timer;
 
-    public TeleportTask(JavaPlugin plugin, TeleportManager teleportManager, CooldownManager cooldownManager, Player player, Location home) {
+    public TeleportTask(JavaPlugin plugin, TeleportManager teleportManager, Player player, Location home) {
         this.plugin = plugin;
         this.teleportManager = teleportManager;
-        this.cooldownManager = cooldownManager;
         this.player = player;
         this.home = home;
-        this.startLocation = player.getLocation().getBlock().getLocation(); // the location where the player used the command
+        this.startLocation = player.getLocation().getBlock(); // the location where the player used the command
         timer = 10;
     }
 

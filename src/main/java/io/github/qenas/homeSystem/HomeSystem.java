@@ -10,12 +10,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class HomeSystem extends JavaPlugin {
 
-    HomeManager homeManager = new HomeManager(this);
-    CooldownManager cooldownManager = new CooldownManager(this);
-    TeleportManager teleportManager = new TeleportManager(this, cooldownManager);
+    HomeManager homeManager;
+    CooldownManager cooldownManager;
+    TeleportManager teleportManager;
 
     @Override
     public void onEnable() {
+
+        homeManager = new HomeManager(this);
+        cooldownManager = new CooldownManager(this);
+        teleportManager = new TeleportManager(this, cooldownManager);
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(homeManager), this);
         getCommand("sethome").setExecutor(new SetHome(homeManager));
