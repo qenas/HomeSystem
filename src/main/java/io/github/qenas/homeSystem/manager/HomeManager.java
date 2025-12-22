@@ -3,7 +3,6 @@ package io.github.qenas.homeSystem.manager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -75,7 +74,7 @@ public class HomeManager {
         return homeFile.contains(path);
     }
 
-    public boolean playerHasHome(Player player) {
+    public boolean hasHome(Player player) {
         if(getHome(player) != null) {
             return true;
         }

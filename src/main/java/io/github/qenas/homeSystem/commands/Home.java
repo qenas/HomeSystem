@@ -1,19 +1,13 @@
 package io.github.qenas.homeSystem.commands;
 
-import io.github.qenas.homeSystem.manager.CooldownManager;
 import io.github.qenas.homeSystem.manager.HomeManager;
 import io.github.qenas.homeSystem.manager.TeleportManager;
-import io.github.qenas.homeSystem.tasks.TeleportTask;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 
 public class Home implements CommandExecutor {
@@ -36,7 +30,7 @@ public class Home implements CommandExecutor {
 
         Player player = (Player) commandSender;
 
-        if(homeManager.playerHasHome(player)) {
+        if(homeManager.hasHome(player)) {
             Location playerHome = homeManager.getHome(player);
             teleportManager.startTeleport(player, playerHome);
 

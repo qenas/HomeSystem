@@ -1,5 +1,6 @@
 package io.github.qenas.homeSystem;
 
+import io.github.qenas.homeSystem.commands.MyHome;
 import io.github.qenas.homeSystem.manager.CooldownManager;
 import io.github.qenas.homeSystem.manager.HomeManager;
 import io.github.qenas.homeSystem.commands.Home;
@@ -24,6 +25,7 @@ public final class HomeSystem extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoin(homeManager), this);
         getCommand("sethome").setExecutor(new SetHome(homeManager));
         getCommand("home").setExecutor(new Home(homeManager, teleportManager, this));
+        getCommand("myhome").setExecutor(new MyHome(homeManager));
 
 
     }

@@ -22,10 +22,9 @@ public class PlayerJoin implements Listener {
         Player player = event.getPlayer();
 
         if(homeManager.playerIsOnFile(player)) {
-            if(homeManager.playerHasHome(player)) {
+            if(homeManager.hasHome(player)) {
                 Location loc = homeManager.getHome(player);
-                player.sendMessage(ChatColor.GREEN + "» You have a home, the coordinates are: ");
-                CoordinatesShower.displayCoordinates(loc, player);
+                CoordinatesShower.showHome(loc, player);
             } else {
                 player.sendMessage("» You do not have a home");
             }
